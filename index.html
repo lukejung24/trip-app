@@ -1,127 +1,271 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>출장 앱</title>
+  <title>출장 일정 관리 앱</title>
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #eef3f8;
+      color: #16202b;
     }
     .wrap {
-      max-width: 720px;
+      max-width: 860px;
       margin: 0 auto;
       padding: 16px;
     }
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
-    h1, h2 { margin: 0 0 12px; }
-    .muted { color: #64748b; font-size: 14px; }
-    input, button, textarea, select {
-      width: 100%;
-      padding: 12px;
-      margin-top: 8px;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      font-size: 14px;
-    }
-    button {
-      background: #0f172a;
+    .hero {
+      background: linear-gradient(135deg, #1b2a3a, #2b4258);
       color: white;
-      border: none;
-      cursor: pointer;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 14px 34px rgba(27, 42, 58, 0.18);
     }
-    button.small {
-      width: auto;
-      padding: 8px 12px;
-      margin-left: 8px;
+    .hero h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      margin: 8px 0 0;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .stat {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 12px;
+      backdrop-filter: blur(6px);
+    }
+    .stat .label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.70);
+    }
+    .stat .value {
+      margin-top: 6px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 28px rgba(32, 51, 74, 0.07);
+      border: 1px solid #e7edf4;
+      margin-bottom: 16px;
+    }
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      color: #1b2a3a;
+    }
+    .sub {
+      color: #6f7f90;
+      font-size: 13px;
+      margin-top: -6px;
+      margin-bottom: 14px;
     }
     .row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
-    .item {
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 12px;
-      margin-top: 10px;
-      background: #fff;
+    input, textarea, button {
+      width: 100%;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 14px;
+      outline: none;
     }
-    .topline {
+    input, textarea {
+      border: 1px solid #d8e2ec;
+      background: #f9fbfd;
+      color: #16202b;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #94a3b8;
+    }
+    input:focus, textarea:focus {
+      border-color: #8ba9c7;
+      box-shadow: 0 0 0 3px rgba(123, 160, 197, 0.16);
+      background: #ffffff;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+    button {
+      border: none;
+      background: #22384d;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.18s ease;
+      box-shadow: 0 6px 14px rgba(34, 56, 77, 0.14);
+    }
+    button:hover {
+      opacity: 0.94;
+    }
+    .secondary {
+      background: #e8eef5;
+      color: #22384d;
+      box-shadow: none;
+    }
+    .schedule-item, .todo-item {
+      border: 1px solid #e5edf5;
+      border-radius: 18px;
+      padding: 14px;
+      margin-top: 12px;
+      background: linear-gradient(180deg, #ffffff, #fbfdff);
+    }
+    .schedule-top, .todo-top {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 12px;
-      align-items: center;
     }
-    .task {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-      padding: 10px;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
+    .time-badge {
+      display: inline-block;
+      background: #e9f1f8;
+      color: #31597d;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #1f3144;
+    }
+    .muted {
+      color: #718295;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .inline-btn {
+      width: auto;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+    .todo-text {
+      flex: 1;
+      margin-right: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: #1f3144;
     }
     .done {
       text-decoration: line-through;
-      color: #94a3b8;
+      color: #9aa8b6;
     }
-    @media (max-width: 640px) {
+    .empty {
+      text-align: center;
+      color: #94a3b8;
+      padding: 20px 8px;
+      font-size: 14px;
+    }
+    @media (max-width: 760px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: 1fr; }
       .row { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 24px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="card">
+    <section class="hero">
       <h1>출장 일정 관리 앱</h1>
-      <div class="muted">일정, 출장 정보, 할 일을 간단히 저장할 수 있습니다.</div>
-    </div>
+      <p>일정, 출장 정보, 할 일을 한 화면에서 정리하는 프리미엄 업무용 대시보드입니다.</p>
 
-    <div class="card">
-      <h2>일정 추가</h2>
-      <div class="row">
-        <input type="date" id="date" />
-        <input type="time" id="time" />
-        <input type="text" id="title" placeholder="일정 제목" />
-        <input type="text" id="place" placeholder="장소" />
+      <div class="stats">
+        <div class="stat">
+          <div class="label">총 일정</div>
+          <div class="value" id="totalSchedules">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">할 일 수</div>
+          <div class="value" id="totalTodos">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">완료</div>
+          <div class="value" id="doneTodos">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">도시</div>
+          <div class="value" id="tripCityStat">-</div>
+        </div>
       </div>
-      <textarea id="memo" placeholder="메모"></textarea>
-      <button onclick="addSchedule()">일정 저장</button>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>일정 목록</h2>
-      <div id="scheduleList"></div>
-    </div>
+    <section class="grid">
+      <div>
+        <div class="card">
+          <h2>일정 추가</h2>
+          <div class="sub">출장 미팅, 인터뷰, 이동 일정을 저장하세요.</div>
 
-    <div class="card">
-      <h2>출장 정보</h2>
-      <input type="text" id="city" placeholder="도시" />
-      <input type="text" id="hotel" placeholder="호텔" />
-      <input type="text" id="flight" placeholder="항공편" />
-      <button onclick="saveTripInfo()">출장 정보 저장</button>
-    </div>
+          <div class="row">
+            <input type="date" id="date" />
+            <input type="time" id="time" />
+            <input type="text" id="title" placeholder="일정 제목" />
+            <input type="text" id="place" placeholder="장소" />
+          </div>
+          <textarea id="memo" placeholder="메모"></textarea>
+          <button onclick="addSchedule()">일정 저장</button>
+        </div>
 
-    <div class="card">
-      <h2>할 일</h2>
-      <div class="row">
-        <input type="text" id="todoInput" placeholder="할 일 입력" />
-        <button onclick="addTodo()">추가</button>
+        <div class="card">
+          <h2>일정 목록</h2>
+          <div class="sub">저장된 일정이 시간순으로 표시됩니다.</div>
+          <div id="scheduleList"></div>
+        </div>
       </div>
-      <div id="todoList"></div>
-    </div>
+
+      <div>
+        <div class="card">
+          <h2>출장 정보</h2>
+          <div class="sub">도시, 호텔, 항공편을 저장하세요.</div>
+          <input type="text" id="city" placeholder="도시" />
+          <input type="text" id="hotel" placeholder="호텔" />
+          <input type="text" id="flight" placeholder="항공편" />
+          <button onclick="saveTripInfo()">출장 정보 저장</button>
+        </div>
+
+        <div class="card">
+          <h2>할 일</h2>
+          <div class="sub">클릭하면 완료 표시, 삭제도 가능합니다.</div>
+          <div class="row">
+            <input type="text" id="todoInput" placeholder="할 일 입력" />
+            <button onclick="addTodo()">추가</button>
+          </div>
+          <div id="todoList"></div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <script>
@@ -129,14 +273,23 @@
     let todos = JSON.parse(localStorage.getItem("todos") || "[]");
     let tripInfo = JSON.parse(localStorage.getItem("tripInfo") || "{}");
 
+    function updateStats() {
+      document.getElementById("totalSchedules").textContent = schedules.length;
+      document.getElementById("totalTodos").textContent = todos.length;
+      document.getElementById("doneTodos").textContent = todos.filter(t => t.done).length;
+      document.getElementById("tripCityStat").textContent = tripInfo.city || "-";
+    }
+
     function saveSchedules() {
       localStorage.setItem("schedules", JSON.stringify(schedules));
       renderSchedules();
+      updateStats();
     }
 
     function saveTodos() {
       localStorage.setItem("todos", JSON.stringify(todos));
       renderTodos();
+      updateStats();
     }
 
     function addSchedule() {
@@ -146,7 +299,10 @@
       const place = document.getElementById("place").value.trim();
       const memo = document.getElementById("memo").value.trim();
 
-      if (!date || !time || !title || !place) return;
+      if (!date || !time || !title || !place) {
+        alert("날짜, 시간, 제목, 장소를 입력해주세요.");
+        return;
+      }
 
       schedules.push({ id: Date.now(), date, time, title, place, memo });
       saveSchedules();
@@ -163,32 +319,37 @@
 
     function renderSchedules() {
       const el = document.getElementById("scheduleList");
+
       if (schedules.length === 0) {
-        el.innerHTML = '<div class="muted">등록된 일정이 없습니다.</div>';
+        el.innerHTML = '<div class="empty">등록된 일정이 없습니다.</div>';
         return;
       }
-      el.innerHTML = schedules
-        .sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time))
-        .map(s => `
-          <div class="item">
-            <div class="topline">
-              <strong>${s.date} ${s.time}</strong>
-              <button class="small" onclick="deleteSchedule(${s.id})">삭제</button>
+
+      const sorted = [...schedules].sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
+
+      el.innerHTML = sorted.map(s => `
+        <div class="schedule-item">
+          <div class="schedule-top">
+            <div>
+              <div class="time-badge">${s.date} ${s.time}</div>
+              <div class="title">${s.title}</div>
+              <div class="muted">${s.place}</div>
+              ${s.memo ? `<div class="muted" style="margin-top:6px;">${s.memo}</div>` : ""}
             </div>
-            <div>${s.title}</div>
-            <div class="muted">${s.place}</div>
-            <div class="muted">${s.memo || ""}</div>
+            <button class="inline-btn secondary" onclick="deleteSchedule(${s.id})">삭제</button>
           </div>
-        `).join("");
+        </div>
+      `).join("");
     }
 
     function saveTripInfo() {
       tripInfo = {
-        city: document.getElementById("city").value,
-        hotel: document.getElementById("hotel").value,
-        flight: document.getElementById("flight").value
+        city: document.getElementById("city").value.trim(),
+        hotel: document.getElementById("hotel").value.trim(),
+        flight: document.getElementById("flight").value.trim()
       };
       localStorage.setItem("tripInfo", JSON.stringify(tripInfo));
+      updateStats();
       alert("출장 정보가 저장되었습니다.");
     }
 
@@ -196,13 +357,20 @@
       document.getElementById("city").value = tripInfo.city || "";
       document.getElementById("hotel").value = tripInfo.hotel || "";
       document.getElementById("flight").value = tripInfo.flight || "";
+      updateStats();
     }
 
     function addTodo() {
       const input = document.getElementById("todoInput");
       const text = input.value.trim();
       if (!text) return;
-      todos.push({ id: Date.now(), text, done: false });
+
+      todos.push({
+        id: Date.now(),
+        text,
+        done: false
+      });
+
       input.value = "";
       saveTodos();
     }
@@ -219,14 +387,18 @@
 
     function renderTodos() {
       const el = document.getElementById("todoList");
+
       if (todos.length === 0) {
-        el.innerHTML = '<div class="muted">등록된 할 일이 없습니다.</div>';
+        el.innerHTML = '<div class="empty">등록된 할 일이 없습니다.</div>';
         return;
       }
+
       el.innerHTML = todos.map(t => `
-        <div class="task">
-          <span class="${t.done ? 'done' : ''}" onclick="toggleTodo(${t.id})">${t.text}</span>
-          <button class="small" onclick="deleteTodo(${t.id})">삭제</button>
+        <div class="todo-item">
+          <div class="todo-top">
+            <div class="todo-text ${t.done ? "done" : ""}" onclick="toggleTodo(${t.id})">${t.text}</div>
+            <button class="inline-btn secondary" onclick="deleteTodo(${t.id})">삭제</button>
+          </div>
         </div>
       `).join("");
     }
@@ -234,6 +406,7 @@
     renderSchedules();
     renderTodos();
     loadTripInfo();
+    updateStats();
   </script>
 </body>
 </html>
