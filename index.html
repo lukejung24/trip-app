@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,22 +8,23 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #eef3f8;
-      color: #16202b;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
     }
     .wrap {
-      max-width: 860px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 16px;
     }
     .hero {
-      background: linear-gradient(135deg, #1b2a3a, #2b4258);
+      background: linear-gradient(135deg, #2b2f36, #3a4049);
       color: white;
       border-radius: 24px;
-      padding: 22px;
+      padding: 24px;
       margin-bottom: 18px;
-      box-shadow: 0 14px 34px rgba(27, 42, 58, 0.18);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.16);
+      border-left: 8px solid #a50034;
     }
     .hero h1 {
       margin: 0;
@@ -45,15 +45,14 @@
       margin-top: 18px;
     }
     .stat {
-      background: rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 16px;
       padding: 12px;
-      backdrop-filter: blur(6px);
     }
     .stat .label {
       font-size: 12px;
-      color: rgba(255,255,255,0.70);
+      color: rgba(255,255,255,0.72);
     }
     .stat .value {
       margin-top: 6px;
@@ -61,29 +60,31 @@
       font-weight: 700;
       color: white;
     }
-    .grid {
+    .layout {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 320px 1fr 320px;
       gap: 16px;
+      align-items: start;
     }
     .card {
-      background: #ffffff;
+      background: #fff;
       border-radius: 22px;
       padding: 18px;
-      box-shadow: 0 10px 28px rgba(32, 51, 74, 0.07);
-      border: 1px solid #e7edf4;
+      box-shadow: 0 8px 24px rgba(31, 41, 55, 0.06);
+      border: 1px solid #e5e7eb;
       margin-bottom: 16px;
     }
     .card h2 {
       margin: 0 0 14px;
       font-size: 20px;
-      color: #1b2a3a;
+      color: #20262e;
     }
     .sub {
-      color: #6f7f90;
+      color: #6b7280;
       font-size: 13px;
       margin-top: -6px;
       margin-bottom: 14px;
+      line-height: 1.5;
     }
     .row {
       display: grid;
@@ -96,58 +97,66 @@
       padding: 12px 14px;
       font-size: 14px;
       outline: none;
+      font-family: inherit;
     }
     input, textarea {
-      border: 1px solid #d8e2ec;
-      background: #f9fbfd;
-      color: #16202b;
-    }
-    input::placeholder, textarea::placeholder {
-      color: #94a3b8;
+      border: 1px solid #d1d5db;
+      background: #fbfbfc;
+      color: #1f2937;
     }
     input:focus, textarea:focus {
-      border-color: #8ba9c7;
-      box-shadow: 0 0 0 3px rgba(123, 160, 197, 0.16);
+      border-color: #a50034;
+      box-shadow: 0 0 0 3px rgba(165, 0, 52, 0.12);
       background: #ffffff;
     }
     textarea {
       resize: vertical;
-      min-height: 90px;
+      min-height: 88px;
     }
     button {
       border: none;
-      background: #22384d;
+      background: #a50034;
       color: white;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: 0.18s ease;
-      box-shadow: 0 6px 14px rgba(34, 56, 77, 0.14);
+      box-shadow: 0 6px 14px rgba(165, 0, 52, 0.16);
     }
     button:hover {
       opacity: 0.94;
     }
     .secondary {
-      background: #e8eef5;
-      color: #22384d;
+      background: #eceff3;
+      color: #374151;
       box-shadow: none;
     }
-    .schedule-item, .todo-item {
-      border: 1px solid #e5edf5;
+    .danger {
+      background: #fff1f4;
+      color: #a50034;
+      box-shadow: none;
+      border: 1px solid #ffd3df;
+    }
+    .trip-item, .todo-item {
+      border: 1px solid #e5e7eb;
       border-radius: 18px;
       padding: 14px;
       margin-top: 12px;
-      background: linear-gradient(180deg, #ffffff, #fbfdff);
+      background: #fff;
     }
-    .schedule-top, .todo-top {
+    .trip-item.active {
+      border: 2px solid #a50034;
+      background: #fff8fa;
+    }
+    .trip-head, .todo-head {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
-    .time-badge {
+    .badge {
       display: inline-block;
-      background: #e9f1f8;
-      color: #31597d;
+      background: #fff1f4;
+      color: #a50034;
       font-size: 12px;
       font-weight: 700;
       padding: 6px 10px;
@@ -156,12 +165,12 @@
     }
     .title {
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 800;
+      color: #20262e;
       margin-bottom: 4px;
-      color: #1f3144;
     }
     .muted {
-      color: #718295;
+      color: #6b7280;
       font-size: 13px;
       line-height: 1.5;
     }
@@ -170,27 +179,129 @@
       padding: 8px 12px;
       border-radius: 12px;
       font-size: 13px;
+      white-space: nowrap;
+    }
+    .empty {
+      text-align: center;
+      color: #9ca3af;
+      padding: 20px 8px;
+      font-size: 14px;
     }
     .todo-text {
       flex: 1;
       margin-right: 8px;
       cursor: pointer;
       font-size: 14px;
-      color: #1f3144;
+      color: #1f2937;
     }
     .done {
       text-decoration: line-through;
-      color: #9aa8b6;
+      color: #9ca3af;
     }
-    .empty {
+
+    .timeline-date {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f9fafb;
+      border: 1px solid #eceff3;
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin-top: 14px;
+      margin-bottom: 10px;
+      font-weight: 800;
+      color: #374151;
+    }
+    .timeline-wrap {
+      position: relative;
+      margin-left: 10px;
+      padding-left: 22px;
+    }
+    .timeline-wrap::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #e5e7eb;
+    }
+    .timeline-item {
+      position: relative;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 10px rgba(31,41,55,0.04);
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -22px;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #a50034;
+      box-shadow: 0 0 0 4px #fff1f4;
+    }
+    .timeline-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .time-chip {
+      display: inline-block;
+      background: #fff1f4;
+      color: #a50034;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .calendar-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 14px;
+    }
+    .calendar-day {
+      min-width: 92px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      border-radius: 16px;
+      padding: 10px;
       text-align: center;
-      color: #94a3b8;
-      padding: 20px 8px;
-      font-size: 14px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .calendar-day.active {
+      border: 2px solid #a50034;
+      background: #fff8fa;
+    }
+    .calendar-day .day-date {
+      font-size: 13px;
+      font-weight: 800;
+      color: #374151;
+    }
+    .calendar-day .day-count {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #a50034;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1100px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 760px) {
       .stats { grid-template-columns: 1fr 1fr; }
-      .grid { grid-template-columns: 1fr; }
       .row { grid-template-columns: 1fr; }
       .hero h1 { font-size: 24px; }
     }
@@ -200,64 +311,87 @@
   <div class="wrap">
     <section class="hero">
       <h1>출장 일정 관리 앱</h1>
-      <p>일정, 출장 정보, 할 일을 한 화면에서 정리하는 프리미엄 업무용 대시보드입니다.</p>
+      <p>LG전자 레드 포인트를 반영한 출장 관리 대시보드입니다. 출장 단위를 먼저 만들고, 선택한 출장 안에서 날짜별 타임라인으로 세부 일정을 관리하세요.</p>
 
       <div class="stats">
         <div class="stat">
-          <div class="label">총 일정</div>
-          <div class="value" id="totalSchedules">0</div>
+          <div class="label">총 출장</div>
+          <div class="value" id="totalTrips">0</div>
         </div>
         <div class="stat">
-          <div class="label">할 일 수</div>
-          <div class="value" id="totalTodos">0</div>
+          <div class="label">선택 출장 일정</div>
+          <div class="value" id="selectedSchedules">0</div>
         </div>
         <div class="stat">
-          <div class="label">완료</div>
-          <div class="value" id="doneTodos">0</div>
+          <div class="label">선택 출장 할 일</div>
+          <div class="value" id="selectedTodos">0</div>
         </div>
         <div class="stat">
-          <div class="label">도시</div>
-          <div class="value" id="tripCityStat">-</div>
+          <div class="label">선택 도시</div>
+          <div class="value" id="selectedCity">-</div>
         </div>
       </div>
     </section>
 
-    <section class="grid">
+    <section class="layout">
       <div>
         <div class="card">
-          <h2>일정 추가</h2>
-          <div class="sub">출장 미팅, 인터뷰, 이동 일정을 저장하세요.</div>
+          <h2>1. 출장 생성</h2>
+          <div class="sub">예: KBIS 2026 출장, 시카고 고객 인터뷰 출장, 북미 법인 방문 출장</div>
 
+          <input type="text" id="tripName" placeholder="출장 이름" />
           <div class="row">
-            <input type="date" id="date" />
-            <input type="time" id="time" />
-            <input type="text" id="title" placeholder="일정 제목" />
-            <input type="text" id="place" placeholder="장소" />
+            <input type="date" id="tripStart" />
+            <input type="date" id="tripEnd" />
           </div>
-          <textarea id="memo" placeholder="메모"></textarea>
-          <button onclick="addSchedule()">일정 저장</button>
+          <input type="text" id="tripCityInput" placeholder="대표 도시" />
+          <textarea id="tripDesc" placeholder="출장 목적 / 핵심 메모"></textarea>
+          <button onclick="addTrip()">출장 생성</button>
         </div>
 
         <div class="card">
-          <h2>일정 목록</h2>
-          <div class="sub">저장된 일정이 시간순으로 표시됩니다.</div>
-          <div id="scheduleList"></div>
+          <h2>출장 목록</h2>
+          <div class="sub">출장을 선택하면 가운데 타임라인이 바뀝니다.</div>
+          <div id="tripList"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="card">
+          <h2>2. 세부 일정 추가</h2>
+          <div class="sub" id="activeTripLabel">먼저 왼쪽에서 출장을 선택하세요.</div>
+
+          <div class="row">
+            <input type="date" id="scheduleDate" />
+            <input type="time" id="scheduleTime" />
+            <input type="text" id="scheduleTitle" placeholder="세부 일정 제목" />
+            <input type="text" id="schedulePlace" placeholder="장소" />
+          </div>
+          <textarea id="scheduleMemo" placeholder="메모"></textarea>
+          <button onclick="addSchedule()">세부 일정 저장</button>
+        </div>
+
+        <div class="card">
+          <h2>캘린더 / 타임라인</h2>
+          <div class="sub">선택한 출장의 일정을 날짜별로 빠르게 보고, 아래에서 시간순으로 확인할 수 있습니다.</div>
+          <div id="calendarStrip" class="calendar-strip"></div>
+          <div id="timelineView"></div>
         </div>
       </div>
 
       <div>
         <div class="card">
           <h2>출장 정보</h2>
-          <div class="sub">도시, 호텔, 항공편을 저장하세요.</div>
-          <input type="text" id="city" placeholder="도시" />
-          <input type="text" id="hotel" placeholder="호텔" />
-          <input type="text" id="flight" placeholder="항공편" />
+          <div class="sub">선택한 출장의 도시, 호텔, 항공편 정보를 저장합니다.</div>
+          <input type="text" id="tripCity" placeholder="도시" />
+          <input type="text" id="tripHotel" placeholder="호텔" />
+          <input type="text" id="tripFlight" placeholder="항공편" />
           <button onclick="saveTripInfo()">출장 정보 저장</button>
         </div>
 
         <div class="card">
           <h2>할 일</h2>
-          <div class="sub">클릭하면 완료 표시, 삭제도 가능합니다.</div>
+          <div class="sub">선택한 출장의 체크리스트입니다.</div>
           <div class="row">
             <input type="text" id="todoInput" placeholder="할 일 입력" />
             <button onclick="addTodo()">추가</button>
@@ -269,144 +403,351 @@
   </div>
 
   <script>
-    let schedules = JSON.parse(localStorage.getItem("schedules") || "[]");
-    let todos = JSON.parse(localStorage.getItem("todos") || "[]");
-    let tripInfo = JSON.parse(localStorage.getItem("tripInfo") || "{}");
+    let trips = JSON.parse(localStorage.getItem("trip_master_list") || "[]");
+    let activeTripId = localStorage.getItem("active_trip_id") || "";
+    let selectedTimelineDate = localStorage.getItem("selected_timeline_date") || "";
 
-    function updateStats() {
-      document.getElementById("totalSchedules").textContent = schedules.length;
-      document.getElementById("totalTodos").textContent = todos.length;
-      document.getElementById("doneTodos").textContent = todos.filter(t => t.done).length;
-      document.getElementById("tripCityStat").textContent = tripInfo.city || "-";
+    function saveTrips() {
+      localStorage.setItem("trip_master_list", JSON.stringify(trips));
+      localStorage.setItem("active_trip_id", activeTripId || "");
+      localStorage.setItem("selected_timeline_date", selectedTimelineDate || "");
+      renderAll();
     }
 
-    function saveSchedules() {
-      localStorage.setItem("schedules", JSON.stringify(schedules));
-      renderSchedules();
-      updateStats();
+    function getActiveTrip() {
+      return trips.find(t => String(t.id) === String(activeTripId));
     }
 
-    function saveTodos() {
-      localStorage.setItem("todos", JSON.stringify(todos));
-      renderTodos();
-      updateStats();
+    function addTrip() {
+      const name = document.getElementById("tripName").value.trim();
+      const start = document.getElementById("tripStart").value;
+      const end = document.getElementById("tripEnd").value;
+      const city = document.getElementById("tripCityInput").value.trim();
+      const desc = document.getElementById("tripDesc").value.trim();
+
+      if (!name || !start || !end) {
+        alert("출장 이름, 시작일, 종료일을 입력해주세요.");
+        return;
+      }
+
+      const newTrip = {
+        id: Date.now(),
+        name,
+        start,
+        end,
+        desc,
+        city: city || "",
+        hotel: "",
+        flight: "",
+        schedules: [],
+        todos: []
+      };
+
+      trips.unshift(newTrip);
+      activeTripId = newTrip.id;
+      selectedTimelineDate = start;
+
+      document.getElementById("tripName").value = "";
+      document.getElementById("tripStart").value = "";
+      document.getElementById("tripEnd").value = "";
+      document.getElementById("tripCityInput").value = "";
+      document.getElementById("tripDesc").value = "";
+
+      saveTrips();
+    }
+
+    function selectTrip(id) {
+      activeTripId = id;
+      const trip = getActiveTrip();
+      selectedTimelineDate = trip ? trip.start : "";
+      saveTrips();
+    }
+
+    function deleteTrip(id) {
+      const ok = confirm("이 출장을 삭제할까요? 세부 일정과 할 일도 함께 삭제됩니다.");
+      if (!ok) return;
+
+      trips = trips.filter(t => String(t.id) !== String(id));
+      if (String(activeTripId) === String(id)) {
+        activeTripId = trips.length ? trips[0].id : "";
+        selectedTimelineDate = trips.length ? trips[0].start : "";
+      }
+      saveTrips();
     }
 
     function addSchedule() {
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const title = document.getElementById("title").value.trim();
-      const place = document.getElementById("place").value.trim();
-      const memo = document.getElementById("memo").value.trim();
+      const trip = getActiveTrip();
+      if (!trip) {
+        alert("먼저 출장을 선택해주세요.");
+        return;
+      }
+
+      const date = document.getElementById("scheduleDate").value;
+      const time = document.getElementById("scheduleTime").value;
+      const title = document.getElementById("scheduleTitle").value.trim();
+      const place = document.getElementById("schedulePlace").value.trim();
+      const memo = document.getElementById("scheduleMemo").value.trim();
 
       if (!date || !time || !title || !place) {
         alert("날짜, 시간, 제목, 장소를 입력해주세요.");
         return;
       }
 
-      schedules.push({ id: Date.now(), date, time, title, place, memo });
-      saveSchedules();
+      trip.schedules.push({
+        id: Date.now(),
+        date,
+        time,
+        title,
+        place,
+        memo
+      });
 
-      document.getElementById("title").value = "";
-      document.getElementById("place").value = "";
-      document.getElementById("memo").value = "";
+      selectedTimelineDate = date;
+
+      document.getElementById("scheduleTitle").value = "";
+      document.getElementById("schedulePlace").value = "";
+      document.getElementById("scheduleMemo").value = "";
+
+      saveTrips();
     }
 
     function deleteSchedule(id) {
-      schedules = schedules.filter(s => s.id !== id);
-      saveSchedules();
-    }
-
-    function renderSchedules() {
-      const el = document.getElementById("scheduleList");
-
-      if (schedules.length === 0) {
-        el.innerHTML = '<div class="empty">등록된 일정이 없습니다.</div>';
-        return;
-      }
-
-      const sorted = [...schedules].sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
-
-      el.innerHTML = sorted.map(s => `
-        <div class="schedule-item">
-          <div class="schedule-top">
-            <div>
-              <div class="time-badge">${s.date} ${s.time}</div>
-              <div class="title">${s.title}</div>
-              <div class="muted">${s.place}</div>
-              ${s.memo ? `<div class="muted" style="margin-top:6px;">${s.memo}</div>` : ""}
-            </div>
-            <button class="inline-btn secondary" onclick="deleteSchedule(${s.id})">삭제</button>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    function saveTripInfo() {
-      tripInfo = {
-        city: document.getElementById("city").value.trim(),
-        hotel: document.getElementById("hotel").value.trim(),
-        flight: document.getElementById("flight").value.trim()
-      };
-      localStorage.setItem("tripInfo", JSON.stringify(tripInfo));
-      updateStats();
-      alert("출장 정보가 저장되었습니다.");
-    }
-
-    function loadTripInfo() {
-      document.getElementById("city").value = tripInfo.city || "";
-      document.getElementById("hotel").value = tripInfo.hotel || "";
-      document.getElementById("flight").value = tripInfo.flight || "";
-      updateStats();
+      const trip = getActiveTrip();
+      if (!trip) return;
+      trip.schedules = trip.schedules.filter(s => String(s.id) !== String(id));
+      saveTrips();
     }
 
     function addTodo() {
+      const trip = getActiveTrip();
+      if (!trip) {
+        alert("먼저 출장을 선택해주세요.");
+        return;
+      }
+
       const input = document.getElementById("todoInput");
       const text = input.value.trim();
       if (!text) return;
 
-      todos.push({
+      trip.todos.push({
         id: Date.now(),
         text,
         done: false
       });
 
       input.value = "";
-      saveTodos();
+      saveTrips();
     }
 
     function toggleTodo(id) {
-      todos = todos.map(t => t.id === id ? { ...t, done: !t.done } : t);
-      saveTodos();
+      const trip = getActiveTrip();
+      if (!trip) return;
+
+      trip.todos = trip.todos.map(t =>
+        String(t.id) === String(id) ? { ...t, done: !t.done } : t
+      );
+      saveTrips();
     }
 
     function deleteTodo(id) {
-      todos = todos.filter(t => t.id !== id);
-      saveTodos();
+      const trip = getActiveTrip();
+      if (!trip) return;
+
+      trip.todos = trip.todos.filter(t => String(t.id) !== String(id));
+      saveTrips();
     }
 
-    function renderTodos() {
-      const el = document.getElementById("todoList");
-
-      if (todos.length === 0) {
-        el.innerHTML = '<div class="empty">등록된 할 일이 없습니다.</div>';
+    function saveTripInfo() {
+      const trip = getActiveTrip();
+      if (!trip) {
+        alert("먼저 출장을 선택해주세요.");
         return;
       }
 
-      el.innerHTML = todos.map(t => `
-        <div class="todo-item">
-          <div class="todo-top">
-            <div class="todo-text ${t.done ? "done" : ""}" onclick="toggleTodo(${t.id})">${t.text}</div>
-            <button class="inline-btn secondary" onclick="deleteTodo(${t.id})">삭제</button>
+      trip.city = document.getElementById("tripCity").value.trim();
+      trip.hotel = document.getElementById("tripHotel").value.trim();
+      trip.flight = document.getElementById("tripFlight").value.trim();
+
+      saveTrips();
+      alert("출장 정보가 저장되었습니다.");
+    }
+
+    function renderTrips() {
+      const el = document.getElementById("tripList");
+
+      if (trips.length === 0) {
+        el.innerHTML = '<div class="empty">등록된 출장이 없습니다.</div>';
+        return;
+      }
+
+      el.innerHTML = trips.map(trip => `
+        <div class="trip-item ${String(trip.id) === String(activeTripId) ? "active" : ""}">
+          <div class="trip-head">
+            <div style="flex:1; cursor:pointer;" onclick="selectTrip('${trip.id}')">
+              <div class="badge">${trip.start} ~ ${trip.end}</div>
+              <div class="title">${trip.name}</div>
+              <div class="muted">${trip.city || "도시 미입력"}</div>
+              ${trip.desc ? `<div class="muted" style="margin-top:6px;">${trip.desc}</div>` : ""}
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <button class="inline-btn secondary" onclick="selectTrip('${trip.id}')">선택</button>
+              <button class="inline-btn danger" onclick="deleteTrip('${trip.id}')">삭제</button>
+            </div>
           </div>
         </div>
       `).join("");
     }
 
-    renderSchedules();
-    renderTodos();
-    loadTripInfo();
-    updateStats();
+    function getTripDateList(trip) {
+      const set = new Set();
+
+      if (trip.start) set.add(trip.start);
+      if (trip.end) set.add(trip.end);
+      trip.schedules.forEach(s => set.add(s.date));
+
+      return [...set].sort();
+    }
+
+    function renderCalendarStrip() {
+      const trip = getActiveTrip();
+      const el = document.getElementById("calendarStrip");
+
+      if (!trip) {
+        el.innerHTML = '<div class="empty" style="width:100%;">선택된 출장이 없습니다.</div>';
+        return;
+      }
+
+      const dates = getTripDateList(trip);
+
+      if (!dates.length) {
+        el.innerHTML = '<div class="empty" style="width:100%;">표시할 날짜가 없습니다.</div>';
+        return;
+      }
+
+      if (!selectedTimelineDate || !dates.includes(selectedTimelineDate)) {
+        selectedTimelineDate = dates[0];
+      }
+
+      el.innerHTML = dates.map(date => {
+        const count = trip.schedules.filter(s => s.date === date).length;
+        return `
+          <div class="calendar-day ${date === selectedTimelineDate ? "active" : ""}" onclick="selectTimelineDate('${date}')">
+            <div class="day-date">${date}</div>
+            <div class="day-count">${count}개 일정</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function selectTimelineDate(date) {
+      selectedTimelineDate = date;
+      localStorage.setItem("selected_timeline_date", selectedTimelineDate);
+      renderCalendarStrip();
+      renderTimeline();
+    }
+
+    function renderTimeline() {
+      const trip = getActiveTrip();
+      const el = document.getElementById("timelineView");
+
+      if (!trip) {
+        el.innerHTML = '<div class="empty">선택된 출장이 없습니다.</div>';
+        return;
+      }
+
+      const dates = getTripDateList(trip);
+      if (!dates.length) {
+        el.innerHTML = '<div class="empty">표시할 일정이 없습니다.</div>';
+        return;
+      }
+
+      const renderDates = selectedTimelineDate ? [selectedTimelineDate] : dates;
+
+      let html = "";
+      renderDates.forEach(date => {
+        const items = trip.schedules
+          .filter(s => s.date === date)
+          .sort((a, b) => a.time.localeCompare(b.time));
+
+        html += `<div class="timeline-date">${date}</div>`;
+
+        if (!items.length) {
+          html += `<div class="empty">이 날짜에 등록된 일정이 없습니다.</div>`;
+        } else {
+          html += `<div class="timeline-wrap">`;
+          html += items.map(s => `
+            <div class="timeline-item">
+              <div class="timeline-head">
+                <div>
+                  <div class="time-chip">${s.time}</div>
+                  <div class="title">${s.title}</div>
+                  <div class="muted">${s.place}</div>
+                  ${s.memo ? `<div class="muted" style="margin-top:6px;">${s.memo}</div>` : ""}
+                </div>
+                <button class="inline-btn danger" onclick="deleteSchedule('${s.id}')">삭제</button>
+              </div>
+            </div>
+          `).join("");
+          html += `</div>`;
+        }
+      });
+
+      el.innerHTML = html;
+    }
+
+    function renderTodos() {
+      const el = document.getElementById("todoList");
+      const trip = getActiveTrip();
+
+      if (!trip) {
+        el.innerHTML = '<div class="empty">선택된 출장이 없습니다.</div>';
+        return;
+      }
+
+      if (!trip.todos.length) {
+        el.innerHTML = '<div class="empty">등록된 할 일이 없습니다.</div>';
+        return;
+      }
+
+      el.innerHTML = trip.todos.map(t => `
+        <div class="todo-item">
+          <div class="todo-head">
+            <div class="todo-text ${t.done ? "done" : ""}" onclick="toggleTodo('${t.id}')">${t.text}</div>
+            <button class="inline-btn secondary" onclick="deleteTodo('${t.id}')">삭제</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function loadTripInfoPanel() {
+      const trip = getActiveTrip();
+      document.getElementById("activeTripLabel").textContent = trip
+        ? `선택 출장: ${trip.name}`
+        : "먼저 왼쪽에서 출장을 선택하세요.";
+
+      document.getElementById("tripCity").value = trip?.city || "";
+      document.getElementById("tripHotel").value = trip?.hotel || "";
+      document.getElementById("tripFlight").value = trip?.flight || "";
+    }
+
+    function updateStats() {
+      const trip = getActiveTrip();
+      document.getElementById("totalTrips").textContent = trips.length;
+      document.getElementById("selectedSchedules").textContent = trip ? trip.schedules.length : 0;
+      document.getElementById("selectedTodos").textContent = trip ? trip.todos.length : 0;
+      document.getElementById("selectedCity").textContent = trip?.city || "-";
+    }
+
+    function renderAll() {
+      renderTrips();
+      renderCalendarStrip();
+      renderTimeline();
+      renderTodos();
+      loadTripInfoPanel();
+      updateStats();
+    }
+
+    renderAll();
   </script>
 </body>
 </html>
